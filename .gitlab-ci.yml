@@ -1,0 +1,54 @@
+before_script:
+#  - "export PATH=$PATH:/usr/local/bin"
+- "export PROJECT_DIR=/web/my_job/admin_ui"
+- "export BUILD_DIR=~/web/my_job_admin/${CI_PIPELINE_ID}"
+
+# Information
+- "whoami"
+- "echo \"Current test location:\" `pwd`"
+- "node --version"
+- "yarn --version"
+
+stages:
+- build
+- test
+- deploy
+
+build:
+  stage: build
+  script:
+  - "export SOURCE_DIR=`pwd`"
+  - "export API_HOST=apimyjob.wienerdeming.com"
+  - "export NODE_ENV=production"
+  - "rm -rf ~/admin_ui_${CI_BUILD_REF_NAME}"
+  - "mkdir ~/admin_ui_${CI_BUILD_REF_NAME}"
+  tags:
+  - dev
+
+test:
+  stage: test
+  script:
+  - "export SOURCE_DIR=`pwd`"
+  - "yarn install"
+  - "yarn lint"
+  tags:
+  - dev
+
+deploy:
+  stage: deploy
+  script:
+  - "/usr/bin/supervisorctl restart all"
+  - "export SOURCE_DIR=`pwd`"
+  - "export API_HOST=apimyjob.wienerdeming.com"
+  - "yarn install"
+  - "export NODE_ENV=production"
+  - "yarn build"
+  - "rm -rf ~/web/my_job_admin/admin_ui_${CI_BUILD_REF_NAME}"
+  - "mkdir ~/web/my_job_admin/admin_ui_${CI_BUILD_REF_NAME}"
+  - "cp -R ${SOURCE_DIR}/dist/* ~/web/my_job_admin/admin_ui_${CI_BUILD_REF_NAME}"
+  - "rm -rf ${PROJECT_DIR}/*"
+  - "cp -R ~/web/my_job_admin/admin_ui_${CI_BUILD_REF_NAME}/* ${PROJECT_DIR}/"
+  only:
+  - master
+  tags:
+  - dev

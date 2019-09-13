@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500,600,700,800&subset=cyrillic');
+
+.react-datepicker__input-container {
+    width: 100%;
+}
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
+#wrapper {
+    background: #455A64;
+}
+
+::-webkit-scrollbar-button {
+    height: 0;
+}
+::-webkit-scrollbar-track {
+    background: #bebebe
+}
+::-webkit-scrollbar-track-piece {
+    background: #bebebe
+}
+::-webkit-scrollbar-thumb {
+    background: #6c6c6c;
+}
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f2f5f8;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Open Sans',sans-serif !important;
+    font-size: 13px;
+    line-height: 1.25;
+    color: #333 !important;
+    min-width: 1024px;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    padding: 0;
+    margin: 0
+}
+
+a {
+    font-weight: 400;
+    text-decoration: none;
+    color: #129fdd;
+    cursor: pointer;
+}
+
+label, button, input {
+    font-size: 13px !important;
+}
+
+
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+strong {
+    font-weight: 600;
+}
+
+body > div object {
+    display: none;
+}
+
+.dottedList {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 20px 0;
+}
+.dottedList:after {
+    content: "";
+    background-image: url(../components/Images/dot.png);
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    left: 0;
+    right: 0;
+}
+
+.dottedListSpec {
+    width: 100%;
+    padding: 10px 0;
+    position: relative;
+}
+.dottedListSpec:last-child:after {
+    background-image: none;
+}
+.dottedListSpec:after {
+    content: "";
+    background-image: url(../components/Images/dot.png);
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    left: 30px;
+    right: 30px;
+}
+
+hr.lineDote {
+    height: 2px;
+    border: none;
+    margin: 0;
+    background-image: url(../components/Images/dot.png);
+}
+.greenFont {color:#81c784 !important;}
+.greenFont svg {color:#81c784 !important;}
+.redFont {color:#e57373 !important;}
+.redFont svg {color:#e57373 !important;}
+.yellowFont {color:#f0ad4e !important;}
+.yellowFont svg {color:#f0ad4e !important;}
+
+.printCloseBtn {
+    position: fixed !important;
+    top: 5px;
+    right: 5px;
+}
+.printItem {
+    width: 100%;
+    padding: 20px 30px 40px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #212121;
+}
+@media print {
+    .printCloseBtn {
+        display: none !important;
+    }
+    .printItem {
+        page-break-inside: avoid;
+    }
+    .printItem > div:first-child > div {
+        margin: 0;
+    }
+}
+
+.DateInput__small {
+    width: calc(50% - 3px);
+    border-bottom: 1px solid #212121;
+}
+
+.input_date_field {
+    font-size: 13px !important;
+    height: 45px !important;
+    margin-top: 7px
+}
+
+.input_date_field div {
+    font-size: 13px !important
+}
+
+.input_date_field label {
+    top: 20px !important;
+    line-height: 5px !important
+}
+
+.input_date_field input {
+    margin-top: 0 !important;
+}
+
+.input_date_field div:first-child {
+    height: 45px !important
+}
+
+.input_date_field div:first-child div:first-child {
+    transform: translate(0px, 0px) !important
+}
+
+.input_field {
+    fontSize: 13px !important;
+    height: 45px !important;
+    marginTop: 7px
+}
+
+
+.input_field label {
+    top: 20px !important;
+    line-height: 5px !important
+}
+
+.input_field input {
+    margin-top: 0 !important;
+}
+
+.input_field > div:first-child {
+    fontSize: 13px !important
+}

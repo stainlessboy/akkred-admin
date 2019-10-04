@@ -77,33 +77,12 @@ const ReestrDetails = enhance((props) => {
       <div className={classes.content}>
         <div className={classes.detailTitle}>
           <Link to={{
-            pathname: ROUTES.REESTR_LIST_URL,
+            pathname: ROUTES.REGIONS_LIST_URL,
             query: filter.getParams()
           }} className={classes.closeDetail}/>
           <span>{_.get(data, 'title')}</span>
           {actionButtons(detailId)}
         </div>
-        <div><strong>Дата аккредитации:</strong><span>{_.get(data, 'accreditationDate')}</span></div>
-        <div><strong>Срок действия свидетельства об аккредитации:</strong> <span>{_.get(data, 'accreditationDuration')}</span></div>
-        <div><strong>Юридический и фактический адрес:</strong> <span>{_.get(data, 'address')}</span></div>
-        <div><strong>Article:</strong> <span>{_.get(data, 'area')}</span></div>
-        <div><strong>Article:</strong> <span>{_.get(data, 'code')}</span></div>
-        <div><strong>Обозначение НД регламентирующих требования к оценке и компетентности ООС или МС::</strong> <span>{_.get(data, 'designationOfTheFundamentalStandard')}</span></div>
-        <div><strong>Article:</strong> <span>{_.get(data, 'email')}</span></div>
-        <div><strong>Форма собственности:</strong> <span>{_.get(data, 'formOwnership')}</span></div>
-        <div><strong>Ф.И.О. руководителя:</strong> <span>{_.get(data, 'fullName')}</span></div>
-        <div><strong>ИНН юридического лица:</strong> <span>{_.get(data, 'inn')}</span></div>
-        <div><strong>Article:</strong> <span>{_.get(data, 'keywords')}</span></div>
-        <div><strong>Номер государственного реестра:</strong> <span>{_.get(data, 'number')}</span></div>
-        <div><strong>Телефон, e-mail:</strong> <span>{_.get(data, 'phone')}</span></div>
-        <div><strong>Регион:</strong> <span>{_.get(data, 'region')}</span></div>
-        <div><strong>Article:</strong> <span>{_.get(data, 'status')}</span></div>
-        <div><strong>Article:</strong> <span>{_.get(data, 'statusDate')}</span></div>
-        <div><strong>Article:</strong> <span>{_.get(data, 'text')}</span></div>
-        <div><strong>Наименование юридического лица ООС или МС:</strong> <span>{_.get(data, 'title')}</span></div>
-        <div><strong>Article:</strong> <span>{_.get(data, 'typeOrgan')}</span></div>
-        <div><strong>Вид ООС или МС:</strong> INN</div>
-
       </div>
     </div>
   )

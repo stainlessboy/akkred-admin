@@ -30,7 +30,7 @@ export const COMPANIES_LIST_URL = `/${COMPANIES}`
 export const COMPANIES_ITEM_URL = `/${COMPANIES}/:companyId`
 export const COMPANIES_ITEM_PATH = `${COMPANIES}/%d`
 
-export const COMPANY_TYPE = 'company-type'
+export const COMPANY_TYPE = 'type-organ'
 export const COMPANY_TYPE_LIST_URL = `/${COMPANY_TYPE}`
 export const COMPANY_TYPE_ITEM_URL = `/${COMPANY_TYPE}/:companyTypeId`
 export const COMPANY_TYPE_ITEM_PATH = `${COMPANY_TYPE}/%d`
@@ -51,9 +51,9 @@ export const POST_ITEM_URL = `${POST_LIST_URL}/:postId`
 export const POST_ITEM_PATH = `${POST}/%d`
 
 export const REGIONS = 'regions'
-export const REGIONS_LIST_URL = `/${SKILLS}`
-export const REGIONS_ITEM_URL = `/${SKILLS}/:regionsId`
-export const REGIONS_ITEM_PATH = `/${SKILLS}/%d`
+export const REGIONS_LIST_URL = `/${REGIONS}`
+export const REGIONS_ITEM_URL = `/${REGIONS}/:regionsId`
+export const REGIONS_ITEM_PATH = `/${REGIONS}/%d`
 
 export const LANGUAGES = 'languages'
 export const LANGUAGES_LIST_URL = `/${SKILLS}`

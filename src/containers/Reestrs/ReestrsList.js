@@ -3,9 +3,8 @@ import _ from 'lodash'
 import Layout from '../../components/Layout'
 import {compose} from 'recompose'
 import setInitialValues from 'helpers/setInitialValues'
-
 import {
-  NewsGridList
+  ReestrsGridList
 } from './components'
 import {
   listWrapper,
@@ -20,54 +19,60 @@ import {
   articlesListFetchAction,
   articlesDeleteAction,
   articlesItemFetchAction
-} from './actions/news'
+} from './actions/reestrs'
 import confirmWrapper from '../Wrappers/ConfirmWrapper'
 
 const updateKeys = {
-  photo: 'photo',
   title: 'title',
+  phone: 'phone',
+  area: 'area',
+  file: 'file',
+  address: 'address',
   text: 'text',
-  'titleRu': 'titleRu',
-  'titleEn': 'titleEn',
-  'titleUz': 'titleUz',
-  'textRu': 'textRu',
-  'textEn': 'textEn',
-  'textUz': 'textUz'
-
+  fullName: 'fullName',
+  typeOrgan: 'typeOrgan',
+  formOwnership: 'formOwnership',
+  designationOfTheFundamentalStandard: 'designationOfTheFundamentalStandard',
+  number: 'number',
+  keywords: 'keywords',
+  inn: 'inn',
+  status: 'status',
+  accreditationDate: 'accreditationDate',
+  accreditationDuration: 'accreditationDuration',
+  statusDate: 'statusDate'
 }
 
 const enhance = compose(
   listWrapper({
     listFetchAction: articlesListFetchAction,
-    storeName: 'articles',
+    storeName: 'reestr',
     except: {tab: null, createTab: null}
-
   }),
   detailWrapper({
     itemFetchAction: articlesItemFetchAction,
-    storeName: 'articles',
-    paramName: 'articleId'
+    storeName: 'reestr',
+    paramName: 'reestrId'
   }),
   createWrapper({
     createAction: articlesCreateAction,
     formName: 'ArticlesCreateForm',
-    storeName: 'articles.create'
+    storeName: 'reestr.create'
   }),
   updateWrapper({
     updateKeys,
     updateAction: articlesUpdateAction,
     formName: 'ArticlesCreateForm',
-    storeName: 'articles'
+    storeName: 'reestr'
   }),
   confirmWrapper({
-    storeName: 'articles',
+    storeName: 'reestr',
     confirmAction: articlesDeleteAction,
     successMessage: 'Успешно удалено',
     failMessage: 'Удаление невозможно из-за связи с другими данными'
   })
 )
 
-const NewsList = enhance((props) => {
+const ReestrsList = enhance((props) => {
   const {
     list,
     listLoading,
@@ -79,7 +84,7 @@ const NewsList = enhance((props) => {
     updateDialog
   } = props
 
-  const detailId = _.toInteger(_.get(params, 'articleId'))
+  const detailId = _.toInteger(_.get(params, 'reestrId'))
 
   const listData = {
     data: _.get(list, 'results'),
@@ -91,23 +96,25 @@ const NewsList = enhance((props) => {
     data: detail,
     detailLoading
   }
-  const updateInitial = {
-    content: _.get(detail, 'text')
-  }
-  setInitialValues(updateDialog, updateInitial)
 
+  const updateInitial = {
+    type: {value: _.get(detail, 'type')},
+    content: _.get(detail, 'content')
+  }
+
+  setInitialValues(updateDialog, updateInitial)
   return (
     <Layout {...layout}>
-      <NewsGridList
+      <ReestrsGridList
         filter={filter}
         listData={listData}
         detailData={detailData}
         createDialog={props.createDialog}
         confirmDialog={props.confirmDialog}
-        updateDialog={props.updateDialog}
+        updateDialog={updateDialog}
       />
     </Layout>
   )
 })
 
-export default NewsList
+export default ReestrsList

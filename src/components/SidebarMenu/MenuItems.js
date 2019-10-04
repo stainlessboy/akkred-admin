@@ -16,42 +16,60 @@ const NOT_FOUND = -1
 
 export const MenuItems = [
 
-  {
-    name: t('Пользователи'),
-    icon: (<AccountIcon/>),
-    url: ROUTES.APPLICANT_LIST_URL,
-    query: defaultPageSizeQuery,
-    childs: [
-      {name: t('Исполнители'), url: ROUTES.APPLICANT_LIST_URL, query: defaultPageSizeQuery, permission: ''},
-      {
-        name: t('Заказ'),
-        url: ROUTES.ORDER_LIST_URL,
-        query: defaultPageSizeQuery,
-        permission: '',
-        icon: <AccountIcon/>
-      }
-    ]
-  },
+  // {
+  //   name: t('Пользователи'),
+  //   icon: (<AccountIcon/>),
+  //   url: ROUTES.APPLICANT_LIST_URL,
+  //   query: defaultPageSizeQuery,
+  //   childs: [
+  //     {name: t('Исполнители'), url: ROUTES.APPLICANT_LIST_URL, query: defaultPageSizeQuery, permission: ''},
+  //     {
+  //       name: t('Заказ'),
+  //       url: ROUTES.ORDER_LIST_URL,
+  //       query: defaultPageSizeQuery,
+  //       permission: '',
+  //       icon: <AccountIcon/>
+  //     }
+  //   ]
+  // },
 
   {
-    name: t('Сфера услуг'),
+    name: t('Тип органов'),
     icon: (<Widgets/>),
     url: ROUTES.COMPANY_TYPE_LIST_URL,
     query: defaultPageSizeQuery,
     childs: [
-      {name: t('Сфера услуг'), url: ROUTES.COMPANY_TYPE_LIST_URL, permission: ''}
+      {name: t('Тип органов'), url: ROUTES.COMPANY_TYPE_LIST_URL, permission: ''}
+    ]
+  },
+  {
+    name: t('Регионы'),
+    icon: (<Widgets/>),
+    url: ROUTES.REGIONS_LIST_URL,
+    query: defaultPageSizeQuery,
+    childs: [
+      {name: t('Регионы'), url: ROUTES.REGIONS_LIST_URL, permission: ''}
     ]
   },
 
-  {
-    name: t('Новости'),
-    icon: (<Administration/>),
-    section: 'Administration',
-    url: ROUTES.ARTICLES_LIST_URL,
-    childs: [
-      {section: 'Основные', name: t('Новости'), url: ROUTES.ARTICLES_LIST_URL, permission: ''}
-    ]
-  },
+  // {
+  //   name: t('Новости'),
+  //   icon: (<Administration/>),
+  //   section: 'Administration',
+  //   url: ROUTES.ARTICLES_LIST_URL,
+  //   childs: [
+  //     {section: 'Основные', name: t('Новости'), url: ROUTES.ARTICLES_LIST_URL, permission: ''}
+  //   ]
+  // },
+  // {
+  //   name: t('Реестры'),
+  //   icon: (<Administration/>),
+  //   section: 'Administration',
+  //   url: ROUTES.REESTR_LIST_URL,
+  //   childs: [
+  //     {section: 'Основные', name: t('Реестры'), url: ROUTES.REESTR_LIST_URL, permission: ''}
+  //   ]
+  // },
   {
     name: t('Реестры'),
     icon: (<Administration/>),

@@ -26,8 +26,7 @@ import {
 } from '../../../actions/Settings/service'
 
 const UPDATE_KEYS = {
-  name: 'name',
-  price: 'price',
+  title: 'title',
 }
 
 const enhance = compose(

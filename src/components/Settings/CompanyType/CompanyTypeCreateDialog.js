@@ -50,7 +50,7 @@ const CompanyTypeCreateDialog = enhance((props) => {
       bodyStyle={{minHeight: 'auto'}}
       bodyClassName={classes.popUp}>
       <div className={classes.titleContent}>
-        <span>{isUpdate ? t('Изменить тип продукта') : t('Добавить тип продукта')}</span>
+        <span>{isUpdate ? t('Изменить тип органа') : t('Добавить тип органа')}</span>
         <IconButton onClick={onClose}>
           <CloseIcon color="#666666"/>
         </IconButton>
@@ -63,19 +63,13 @@ const CompanyTypeCreateDialog = enhance((props) => {
           <div className={classes.inContent} style={{minHeight: '100px', paddingTop: '15px'}}>
             <div className={classes.field}>
               <Field
-                name="name"
+                name="title"
                 component={TextField}
                 className={classes.inputFieldCustom}
-                label={t('Наименование услуги')}
+                label={t('Наименование органа')}
                 fullWidth={true}
               />
-              <Field
-                name="price"
-                component={TextField}
-                className={classes.inputFieldCustom}
-                label={t('Цена')}
-                fullWidth={true}
-              />
+
             </div>
           </div>
           <div className={classes.bottomButton}>

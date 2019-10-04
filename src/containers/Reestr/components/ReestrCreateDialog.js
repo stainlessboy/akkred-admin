@@ -6,16 +6,22 @@ import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
 import Loader from 'components/Loader'
 import {Field, reduxForm} from 'redux-form'
-import {ImageUploadField, TextField, UniversalSearchField} from 'components/ReduxForm'
+import {ImageUploadField, TextField, UniversalSearchField, DateField, StaticUniversalSearchField} from 'components/ReduxForm'
 import Editor from 'components/ReduxForm/Editor/Editor'
 
 import CloseIcon from 'material-ui/svg-icons/navigation/close'
 import IconButton from 'material-ui/IconButton'
 import t from 'helpers/translate'
 import * as API from '../../../constants/api'
+import FileSimpleUploadField from '../../../components/ReduxForm/Basic/FileSimpleUploadField'
 
 export const ARTICLES_CREATE_DIALOG_OPEN = 'openCreateDialog'
-
+export const STATUS_LIST = [
+  {id: 'active', name: 'Действующий'},
+  {id: 'inactive', name: 'Прекращен'},
+  {id: 'paused', name: 'Приостановлен'},
+  {id: 'extended', name: 'Продлен'}
+]
 const enhance = compose(
   injectSheet({
     dialog: {
@@ -163,7 +169,7 @@ const ReestrCreateDialog = enhance((props) => {
       bodyStyle={{minHeight: 'auto'}}
       bodyClassName={classes.popUp}>
       <div className={classes.titleContent}>
-        <span>{isUpdate ? t('Изменить статью') : t('Добавить статью')}</span>
+        <span>{isUpdate ? t('Изменить регион') : t('Добавить регион')}</span>
         <IconButton onClick={onClose}>
           <CloseIcon color="#666666"/>
         </IconButton>
@@ -175,37 +181,13 @@ const ReestrCreateDialog = enhance((props) => {
           </div>
           <div className={classes.inContent} style={{minHeight: '100px', paddingTop: '15px'}}>
             <div className={classes.field}>
-              <div className={classes.imageField}>
-                <Field
-                  name="file"
-                  component={ImageUploadField}
-                  fullWidth={true}/>
-              </div>
-              <Field
-                name="region"
-                component={UniversalSearchField}
-                listPath={API.REGIONS_LIST}
-                label={'District'}
-                className={classes.inputFieldCustom}
-                fullWidth={true}/>
               <Field
                 name="title"
                 component={TextField}
                 className={classes.inputFieldCustom}
-                label={t('Заголовок')}
+                label={t('Наименование региона')}
                 fullWidth={true}/>
-              <Field
-                name="intro"
-                component={Editor}
 
-                className={classes.inputFieldCustom}
-                label={t('Введение')}
-                fullWidth/>
-              <Field
-                name="text"
-                component={Editor}
-
-              />
             </div>
           </div>
           <div className={classes.bottomButton}>

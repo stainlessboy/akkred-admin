@@ -3,15 +3,8 @@ import {orderingSnakeCase} from '../../../helpers/serializer'
 
 export const createSerializer = (data) => {
   const title = _.get(data, ['title'])
-  const intro = _.get(data, ['intro'])
-  const text = _.get(data, ['text'])
-  const image = _.get(data, 'photo.id') ? _.get(data, 'photo.id') : _.get(data, 'photo')
-
   return {
-    title,
-    intro,
-    image,
-    text
+    title
   }
 }
 

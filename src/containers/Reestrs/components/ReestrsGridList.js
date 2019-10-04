@@ -7,8 +7,8 @@ import DeleteIcon from 'material-ui/svg-icons/action/delete'
 import * as ROUTES from '../../../constants/routes'
 import GridList from '../../../components/GridList'
 import Container from '../../../components/Container'
-import ReestrCreateDialog from './ReestrCreateDialog'
-import ReestrDetails from './ReestrDetails'
+import ReestrsCreateDialog from './ReestrsCreateDialog'
+import ReestrsDetails from './ReestrsDetails'
 import ConfirmDialog from '../../../components/ConfirmDialog'
 import injectSheet from 'react-jss'
 import {compose} from 'recompose'
@@ -18,11 +18,12 @@ import SubMenu from '../../../components/SubMenu'
 import Edit from 'material-ui/svg-icons/image/edit'
 import ToolTip from '../../../components/Utils/ToolTip'
 import {Link} from 'react-router'
+import defaultPropTypes from 'constants/propTypes'
+
 import dateFormat from '../../../helpers/dateFormat'
 import t from '../../../helpers/translate'
 import {COLOR_WHITE, LINK_COLOR} from '../../../constants/styleConstants'
 import sprintf from 'sprintf'
-// import deepPure from '../../../helpers/deepPure'
 
 const listHeader = [
   {
@@ -94,8 +95,7 @@ const enhance = compose(
       justifyContent: 'flex-end',
       zIndex: '2'
     }
-  }),
-  // deepPure
+  })
 )
 
 const iconStyle = {
@@ -111,7 +111,7 @@ const iconStyle = {
   }
 }
 
-const ReestrGridList = enhance((props) => {
+const ReestrsGridList = enhance((props) => {
   const {
     filter,
     createDialog,
@@ -150,7 +150,7 @@ const ReestrGridList = enhance((props) => {
   }
 
   const articlesDetail = (
-    <ReestrDetails
+    <ReestrsDetails
       filter={filter}
       key={_.get(detailData, 'id')}
       data={_.get(detailData, 'data') || {}}
@@ -166,11 +166,13 @@ const ReestrGridList = enhance((props) => {
       <Row key={id} className={classes.listRow}>
         <Col xs={2}>{id}</Col>
         <Link className={classes.link} to={{
-          pathname: sprintf(ROUTES.REGIONS_ITEM_PATH, id),
+          pathname: sprintf(ROUTES.REESTR_ITEM_PATH, id),
           query: filter.getParams()
         }}/>
         <Col xs={6}>{title}</Col>
         <Col xs={3}>{createdDate}</Col>
+        <Col xs={1} style={{textAlign: 'right'}}>
+        </Col>
       </Row>
     )
   })
@@ -187,7 +189,7 @@ const ReestrGridList = enhance((props) => {
         backgroundColor={COLOR_WHITE}
         labelStyle={{textTransform: 'none', paddingLeft: '2px', color: LINK_COLOR, fontSize: '13px'}}
         className={classes.addButton}
-        label={t('добавить регион')}
+        label={t('добавить реестр')}
         onClick={createDialog.onOpen}
         icon={<ContentAdd color={LINK_COLOR}/>}>
       </FlatButton>
@@ -196,7 +198,7 @@ const ReestrGridList = enhance((props) => {
   return (
     <Container>
       <div className={classes.wrapper}>
-        <SubMenu url={ROUTES.REGIONS_LIST_URL}/>
+        <SubMenu url={ROUTES.REESTR_LIST_URL}/>
         <GridList
           filter={filter}
           list={list}
@@ -206,14 +208,16 @@ const ReestrGridList = enhance((props) => {
         />
       </div>
 
-      <ReestrCreateDialog
+      <ReestrsCreateDialog
+        filter={filter}
         open={createDialog.open}
         loading={createDialog.loading}
         onClose={createDialog.onClose}
         onSubmit={createDialog.onSubmit}
       />
 
-      <ReestrCreateDialog
+      <ReestrsCreateDialog
+        filter={filter}
         isUpdate={true}
         initialValues={updateDialog.initialValues}
         open={updateDialog.open}
@@ -235,7 +239,7 @@ const ReestrGridList = enhance((props) => {
   )
 })
 
-ReestrGridList.propTypes = {
+ReestrsGridList.propTypes = {
   filter: PropTypes.object.isRequired,
   listData: PropTypes.object,
   detailData: PropTypes.object,
@@ -247,11 +251,7 @@ ReestrGridList.propTypes = {
     onSubmit: PropTypes.func.isRequired
   }).isRequired,
   confirmDialog: PropTypes.shape({
-    confirmLoading: PropTypes.bool.isRequired,
-    openConfirmDialog: PropTypes.bool.isRequired,
-    handleOpenConfirmDialog: PropTypes.func.isRequired,
-    handleCloseConfirmDialog: PropTypes.func.isRequired,
-    handleSendConfirmDialog: PropTypes.func.isRequired
+    ...defaultPropTypes
   }).isRequired,
   updateDialog: PropTypes.shape({
     loading: PropTypes.bool.isRequired,
@@ -262,4 +262,4 @@ ReestrGridList.propTypes = {
   }).isRequired
 }
 
-export default ReestrGridList
+export default ReestrsGridList

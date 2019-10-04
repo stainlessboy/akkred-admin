@@ -32,12 +32,6 @@ const listHeader = [
   },
   {
     sorting: true,
-    name: 'division',
-    xs: 4,
-    title: t('Цена')
-  },
-  {
-    sorting: true,
     xs: 1,
     name: 'actions',
     title: ''
@@ -194,12 +188,10 @@ const CompanyTypeGridList = enhance((props) => {
   const companyTypeList = _.map(listData.data, (item, index) => {
     const id = _.toNumber(_.get(item, 'id'))
     //    Const status = fp.flow(findItem, fp.get('name'))
-    const fullName = _.get(item, 'name')
-    const price = numberFormat(_.get(item, 'price'))
+    const fullName = _.get(item, 'title')
     return (
       <Row key={id} className={classes.listRow}>
         <Col xs={7}>{fullName}</Col>
-        <Col xs={4}>{price}</Col>
         <Col xs={1}>
           <div className={classes.iconBtn}>
             <ToolTip position="bottom" text={t('Изменить')}>
@@ -228,7 +220,6 @@ const CompanyTypeGridList = enhance((props) => {
     )
   })
 
-
   const list = {
     header: listHeader,
     list: companyTypeList,
@@ -240,7 +231,7 @@ const CompanyTypeGridList = enhance((props) => {
         backgroundColor="#fff"
         labelStyle={{textTransform: 'none', paddingLeft: '2px', color: '#12aaeb', fontSize: '13px'}}
         className={classes.addButton}
-        label={t('добавить тип продукта')}
+        label={t('добавить тип органа')}
         onClick={createDialog.onOpen}
         icon={<ContentAdd color="#12aaeb"/>}>
       </FlatButton>
@@ -277,7 +268,7 @@ const CompanyTypeGridList = enhance((props) => {
 
       <ConfirmDialog
         type="delete"
-        message={_.get(detailData, ['data', 'name'])}
+        message={_.get(detailData, ['data', 'title'])}
         loading={confirmDialog.loading}
         onClose={confirmDialog.onClose}
         onSubmit={confirmDialog.onSubmit}

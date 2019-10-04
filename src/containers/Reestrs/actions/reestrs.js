@@ -3,12 +3,12 @@ import sprintf from 'sprintf'
 import axios from '../../../helpers/axios'
 import * as API from '../../../constants/api'
 import * as actionTypes from '../../../constants/actionTypes'
-import * as serializers from './reestrSerializer'
+import * as serializers from './reestrsSerializer'
 
 export const articlesCreateAction = (formValues) => {
   const requestData = serializers.createSerializer(formValues)
   const payload = axios()
-    .post(API.REGIONS_CREATE, requestData)
+    .post(API.REESTR_CREATE, requestData)
     .then((response) => {
       return _.get(response, 'data')
     })
@@ -17,14 +17,14 @@ export const articlesCreateAction = (formValues) => {
     })
 
   return {
-    type: actionTypes.REGIONS_CREATE,
+    type: actionTypes.REESTR_CREATE,
     payload
   }
 }
 
 export const articlesDeleteAction = (id) => {
   const payload = axios()
-    .delete(sprintf(API.REGIONS_DELETE, id))
+    .delete(sprintf(API.REESTR_DELETE, id))
     .then((response) => {
       return _.get(response, 'data')
     })
@@ -33,7 +33,7 @@ export const articlesDeleteAction = (id) => {
     })
 
   return {
-    type: actionTypes.REGIONS_DELETE,
+    type: actionTypes.REESTR_DELETE,
     payload
   }
 }
@@ -41,7 +41,7 @@ export const articlesDeleteAction = (id) => {
 export const articlesUpdateAction = (id, formValues) => {
   const requestData = serializers.createSerializer(formValues)
   const payload = axios()
-    .put(sprintf(API.REGIONS_ITEM, id), requestData)
+    .put(sprintf(API.REESTR_ITEM, id), requestData)
     .then((response) => {
       return _.get(response, 'data')
     })
@@ -50,7 +50,7 @@ export const articlesUpdateAction = (id, formValues) => {
     })
 
   return {
-    type: actionTypes.REGIONS_UPDATE,
+    type: actionTypes.REESTR_UPDATE,
     payload
   }
 }
@@ -58,7 +58,7 @@ export const articlesUpdateAction = (id, formValues) => {
 export const articlesListFetchAction = (filter) => {
   const params = serializers.listFilterSerializer(filter.getParams())
   const payload = axios()
-    .get(API.REGIONS_LIST, {params})
+    .get(API.REESTR_LIST, {params})
     .then((response) => {
       return _.get(response, 'data')
     })
@@ -67,14 +67,14 @@ export const articlesListFetchAction = (filter) => {
     })
 
   return {
-    type: actionTypes.REGIONS_LIST,
+    type: actionTypes.REESTR_LIST,
     payload
   }
 }
 
 export const articlesItemFetchAction = (id) => {
   const payload = axios()
-    .get(sprintf(API.REGIONS_ITEM, id))
+    .get(sprintf(API.REESTR_ITEM, id))
     .then((response) => {
       return _.get(response, 'data')
     })
@@ -83,7 +83,7 @@ export const articlesItemFetchAction = (id) => {
     })
 
   return {
-    type: actionTypes.REGIONS_ITEM,
+    type: actionTypes.REESTR_ITEM,
     payload
   }
 }

@@ -90,6 +90,12 @@ const rootReducer = combineReducers({
     update: createThunkReducer(actionTypes.REESTR_UPDATE),
     item: createThunkReducer(actionTypes.REESTR_ITEM)
   }),
+  regions: combineReducers({
+    create: createThunkReducer(actionTypes.REGIONS_CREATE),
+    list: createThunkReducer(actionTypes.REGIONS_LIST),
+    update: createThunkReducer(actionTypes.REGIONS_UPDATE),
+    item: createThunkReducer(actionTypes.REGIONS_ITEM)
+  }),
   companies: combineReducers({
     create: createThunkReducer(actionTypes.COMPANIES_CREATE),
     list: createThunkReducer(actionTypes.COMPANIES_LIST),

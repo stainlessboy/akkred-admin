@@ -13,6 +13,7 @@ import NewsList from '../containers/News'
 import CustomerList from '../containers/Customer'
 import OrderList from '../containers/Order'
 import ReestrList from '../containers/Reestr'
+import ReestrsList from '../containers/Reestrs'
 import ProjectList from '../containers/Project'
 import PerformerList from '../containers/Performer'
 import {
@@ -202,10 +203,21 @@ export default {
         }
       ]
     },
-    // Reestr
+    // REGION
+    {
+      path: ROUTES.REGIONS_LIST_URL,
+      component: userIsAdminChain(ReestrList),
+      childRoutes: [
+        {
+          path: ROUTES.REGIONS_ITEM_URL,
+          component: userIsAuth(ReestrList)
+        }
+      ]
+    },
+    // Reestrs
     {
       path: ROUTES.REESTR_LIST_URL,
-      component: userIsAdminChain(ReestrList),
+      component: userIsAdminChain(ReestrsList),
       childRoutes: [
         {
           path: ROUTES.REESTR_ITEM_URL,

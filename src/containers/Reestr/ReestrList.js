@@ -22,35 +22,32 @@ import {
 import confirmWrapper from '../Wrappers/ConfirmWrapper'
 
 const updateKeys = {
-  photo: 'image',
   title: 'title',
-  text: 'text',
-  intro: 'intro'
 }
 
 const enhance = compose(
   listWrapper({
     listFetchAction: articlesListFetchAction,
-    storeName: 'reestr'
+    storeName: 'regions'
   }),
   detailWrapper({
     itemFetchAction: articlesItemFetchAction,
-    storeName: 'reestr',
-    paramName: 'reestrId'
+    storeName: 'regions',
+    paramName: 'regionsId'
   }),
   createWrapper({
     createAction: articlesCreateAction,
     formName: 'ArticlesCreateForm',
-    storeName: 'reestr.create'
+    storeName: 'regions.create'
   }),
   updateWrapper({
     updateKeys,
     updateAction: articlesUpdateAction,
     formName: 'ArticlesCreateForm',
-    storeName: 'reestr'
+    storeName: 'regions'
   }),
   confirmWrapper({
-    storeName: 'reestr',
+    storeName: 'regions',
     confirmAction: articlesDeleteAction,
     successMessage: 'Успешно удалено',
     failMessage: 'Удаление невозможно из-за связи с другими данными'
@@ -68,7 +65,7 @@ const ReestrList = enhance((props) => {
     params
   } = props
 
-  const detailId = _.toInteger(_.get(params, 'reestrId'))
+  const detailId = _.toInteger(_.get(params, 'regionsId'))
 
   const listData = {
     data: _.get(list, 'results'),
@@ -80,7 +77,7 @@ const ReestrList = enhance((props) => {
     data: detail,
     detailLoading
   }
-  console.warn(props)
+
   return (
     <Layout {...layout}>
       <ReestrGridList

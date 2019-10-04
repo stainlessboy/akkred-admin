@@ -87,6 +87,13 @@ export const REGIONS_LIST = `/${REGIONS}/`
 export const REGIONS_ITEM = `/${REGIONS}/%d/`
 export const REGIONS_DELETE = `/${REGIONS}/%d/`
 
+
+export const ORGANS = 'main/type-organ'
+export const ORGANS_CREATE = `/${ORGANS}/`
+export const ORGANS_LIST = `/${ORGANS}/`
+export const ORGANS_ITEM = `/${ORGANS}/%d/`
+export const ORGANS_DELETE = `/${ORGANS}/%d/`
+
 export const HR_APPLICATION = 'hr/application'
 export const HR_APPLICATION_CREATE = `/${HR_APPLICATION}/`
 export const HR_APPLICATION_DELETE = `/${HR_APPLICATION}/%d/`
@@ -219,7 +226,7 @@ export const ORDER_LIST = `/${ORDER}/`
 export const ORDER_ITEM = `/${ORDER}/%d/`
 export const ORDER_DELETE = `/${ORDER}/%d/`
 
-export const SERVICE = 'main/service'
+export const SERVICE = 'main/type-organ'
 export const SERVICE_CREATE = `/${SERVICE}/`
 export const SERVICE_LIST = `/${SERVICE}/`
 export const SERVICE_ITEM = `/${SERVICE}/%d/`
